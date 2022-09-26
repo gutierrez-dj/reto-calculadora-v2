@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk, createAction } from "@reduxjs/toolkit";
-import { basicOperation, calculateU } from "../../utility/basicOperation";
+import { createSlice } from "@reduxjs/toolkit";
+import { basicOperation } from "../../utility/basicOperation";
 
 const initialState = {
   screen: "0",
