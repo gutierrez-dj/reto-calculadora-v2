@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/reto-calculadora-v2/static/css/main.7ee872ad.css",
+    "main.js": "/reto-calculadora-v2/static/js/main.b8ad142c.js",
+    "static/js/787.f13071a9.chunk.js": "/reto-calculadora-v2/static/js/787.f13071a9.chunk.js",
+    "index.html": "/reto-calculadora-v2/index.html",
+    "main.7ee872ad.css.map": "/reto-calculadora-v2/static/css/main.7ee872ad.css.map",
+    "main.b8ad142c.js.map": "/reto-calculadora-v2/static/js/main.b8ad142c.js.map",
+    "787.f13071a9.chunk.js.map": "/reto-calculadora-v2/static/js/787.f13071a9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7ee872ad.css",
+    "static/js/main.b8ad142c.js"
+  ]
+}
