@@ -104,8 +104,8 @@ export const calculateSlice = createSlice({
         state.isCalculate = true;
       }
     },
-    ReturnConcatNumbers: (state) => {
-      const { stringValue, number } = state; 
+    UpdateScreen: (state) => {
+      const { stringValue, number } = state;
       state.screen =
         stringValue.length === 0
           ? number
@@ -131,7 +131,7 @@ export const {
   ClearAll,
   Delete,
   CalculateButton,
-  ReturnConcatNumbers,
+  UpdateScreen,
   ResultCalculate,
 } = calculateSlice.actions;
 
@@ -142,28 +142,33 @@ export const selectNumber = (state) => state.calculate.number;
 export const selectIsCalculate = (state) => state.calculate.isCalculate;
 
 //Redux synchronous Thunks
-export const fetchCalculatorThunk = () => (dispatch, getState) => {
-  console.log(getState());
+export const fetchCalculatorThunk = () => (dispatch, getState) => { 
   const { stringValue } = selectCalculate(getState());
   const temp = [...stringValue]; // copia del array
+  let result = 0;
 
   if (temp.length > 2) {
-    for (let i = 0; i < temp.length - 1; i++) {//primero calcula las operaciones * y /
+    for (let i = 0; i < temp.length - 1; i++) {
+      //primero calcula las operaciones * y /
       if (temp[i].prox_operator === "*" || temp[i].prox_operator === "/") {
         temp.splice(i, 2, {
           num: basicOperation(i, temp).toString(),
           prox_operator: temp[i + 1].prox_operator,
-        }); 
+        });
       }
     }
   }
-  do {
+  console.log(temp);
+  while (temp.length > 1) {
+    console.log(temp[0]);
     temp.splice(0, 2, {
       num: basicOperation(0, temp).toString(),
-      prox_operator: temp[0 + 1].prox_operator,
-    }); 
-  } while (temp.length > 1); 
+      prox_operator: temp[1].prox_operator,
+    });
+    result = temp[0].num;
+  } 
+  //Condicional para que no se muestre el resultado si no hay operaciones
+  temp.length !== 0 && (dispatch(ResultCalculate(result)));
  
-    dispatch(ResultCalculate(temp[0].num)); 
 };
 export default calculateSlice.reducer;
